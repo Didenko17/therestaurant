@@ -1,15 +1,18 @@
 const {Router} = require('express')
-const {createUser,authentication} = require('../controllers/authController')
-const bodyParser = require("body-parser")
+const {createUser,authentication,checkToken} = require('../controllers/authController')
 
 const router = Router()
-const urlencodedParser = bodyParser.urlencoded({extended: false})
 
-router.post('/signup',urlencodedParser, async(req,res)=>{
+
+router.post('/signup', async(req,res)=>{
    return createUser(req,res)
 })
-router.post('/signin',urlencodedParser, async(req,res)=>{
+router.post('/signin', async(req,res)=>{
     return authentication(req,res)
+})
+
+router.post('/check',async(req,res)=>{
+    return checkToken(req,res)
 })
 
 module.exports=router
