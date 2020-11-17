@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const {User} = require('../db/db');
 const {jwtSecret}= require('../config/config')
 const createUser= async(req,res)=>{
-    const {login,email,password}=req.body;
+    const {login,password,email}=req.body;
+    
     //Проверка логина
     await User.findOne({where:{login}, raw:true}).then((user)=>{
         if(!user){
@@ -28,6 +29,7 @@ const createUser= async(req,res)=>{
     hashed+=salt.slice(7);
     //Пулл в БД
     const user= await User.create({login,email,password:hashed});
+    res.status(200).json({message:'Пользователь успешно создан'});
 }
 
 const authentication = async(req,res)=>{

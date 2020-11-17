@@ -6,15 +6,22 @@ const cors=require('cors')
 const authRouter = require('./routes/auth.routes')
 
 const app = express()
-app.use(cors())
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:3000"],
+    optionsSuccessStatus: 200
+  })
+);
 app.use(cookieParser())
-const urlencodedParser = bodyParser.urlencoded({extended: false})
+app.use(express.urlencoded());
+app.use(express.json())
 
 app.get('/', async(req,res)=>{
   res.send(result)
 })
-app.use('/auth',urlencodedParser, authRouter)
+app.use('/api', authRouter)
  
-app.listen(3000,()=>{
+app.listen(4000,()=>{
   console.log('Server is listening')
 })
