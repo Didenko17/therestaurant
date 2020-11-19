@@ -15,13 +15,19 @@ User.init({
       unique:true,
     },
     email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique:true,
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique:true,
     },
     password:{
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    confirm:{
+      type:DataTypes.STRING
+    },
+    reset:{
+      type: DataTypes.STRING
     }
   }, {
     // Other model options go here

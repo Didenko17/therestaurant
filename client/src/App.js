@@ -1,41 +1,27 @@
 import { Layout, Menu, Breadcrumb } from 'antd';
 import React from "react";
 import SignUp from './components/SignUp'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import SignIn from './components/SignIn'
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-
-
 function App() {
   return (
-    <>
+    <Router>
       <Layout>
-        <Router>
           <Header className="header">
             <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+            <Menu theme="dark" mode="horizontal">
               <Menu.Item key="1">
-                <Link to={'/auth/signup'}>Sign Up</Link>
+                <Link to={'/api/signin'}>Войти</Link>
               </Menu.Item>
-              <Menu.Item key="2">nav 2</Menu.Item>
-              <Menu.Item key="3">nav 3</Menu.Item>
             </Menu>
           </Header>
-        </Router>
         <Layout>
           <Sider width={200}  className="site-layout-background">
-            <Menu
-              mode="inline"
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-              style={{ height: '100%', borderRight: 0 }}
-            >
+            <Menu mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} style={{ height: '100%', borderRight: 0 }}>
               <SubMenu key="sub1" title="Фастфуд">
                 <Menu.Item key="1">KFC</Menu.Item>
                 <Menu.Item key="2">Mc'Donalds</Menu.Item>
@@ -58,24 +44,16 @@ function App() {
               <Breadcrumb.Item>List</Breadcrumb.Item>
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
-            <Content
-              className="site-layout-background"
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 486
-              }}
-            >
-            <Router >
+            <Content className="site-layout-background" style={{padding: 24, margin: 0, minHeight: 486}}>
               <Switch>
+                <Route exact path='/api/signin' component={SignIn}/>
                 <Route exact path='/api/signup' component={SignUp}/>
               </Switch>
-            </Router>
             </Content>
           </Layout>
         </Layout>
       </Layout>,
-    </>
+    </Router>
   );
 }
 

@@ -14,3 +14,9 @@
   .site-layout-background {
     background: #fff;
   }
+  .middle-link{
+    margin-left: 45%;
+  }
+  .form-button{
+    width: 100%;
+  }
