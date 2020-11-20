@@ -9,12 +9,12 @@ const sendMail = async(email, subject, text, html)=>{
         service:'gmail',
         secure: false,
         auth: {
-            user: 'vladislav.didenko.2001@gmail.com',
-            pass: "asdf';lk" 
+            user: '',
+            pass: "" 
         },
     });
     let info = await transporter.sendMail({
-        from: 'vladislav.didenko.2001@gmail.com', // sender address
+        from: ''', // sender address
         to: email, // list of receivers
         subject, // Subject line
         text, // plain text body
