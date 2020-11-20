@@ -41,8 +41,6 @@ const SignIn = () => {
             <Button type="primary" className="form-button" htmlType="submit">Войти</Button>
         </Form.Item>
         <Link className='middle-link' to='/api/signup'>Создать аккаунт</Link>
-        <br/>
-        <Link className='middle-link' to='/api/reset'>Забыли пароль?</Link>
     </Form>
   );
 };
