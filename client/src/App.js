@@ -2,7 +2,10 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import React from "react";
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
+import Confirm from './components/Confirm'
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword  from './components/ResetPassword';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -48,6 +51,9 @@ function App() {
               <Switch>
                 <Route exact path='/api/signin' component={SignIn}/>
                 <Route exact path='/api/signup' component={SignUp}/>
+                <Route exact path='/api/reset' component={ForgotPassword}/>
+                <Route exact path='/api/reset/:token' component={ResetPassword}/>
+                <Route exact path='/api/confirm/:token' component={Confirm}/>
               </Switch>
             </Content>
           </Layout>
